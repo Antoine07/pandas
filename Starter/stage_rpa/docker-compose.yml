@@ -1,0 +1,45 @@
+
+services:
+  backend:
+    build: ./rpa_api
+    volumes:
+      - ./rpa_api:/app
+      - /app/__pycache__
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://rpa_user:rpa_password@db:5432/rpa_db
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  frontend:
+    build: ./rpa_client
+    volumes:
+      - ./rpa_client:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=rpa_user
+      - POSTGRES_PASSWORD=rpa_password
+      - POSTGRES_DB=rpa_db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      - ADMINER_DEFAULT_SERVER=db
+
+volumes:
+  postgres-data:
