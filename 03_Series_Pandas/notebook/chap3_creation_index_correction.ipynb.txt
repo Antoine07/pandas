@@ -1,0 +1,348 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Création et index\n",
+    "\n",
+    "## Exercice création d'objet \"Séries\" avec un dictionnaire Python\n",
+    "\n",
+    "Voici une série Pandas pour représenter des villes et leur nombre d'habitants.\n",
+    "\n",
+    "Sauriez-vous deviner ce que seront les index et les valeurs de l'objet Series dans l'exemple ci-dessous ?\n",
+    "\n",
+    "```python\n",
+    "cities =  pd.Series({\n",
+    "    'Bordeaux' : 249712  ,\n",
+    "    'Paris' : 2190327 ,\n",
+    "    'Lille' : 232741\n",
+    "})\n",
+    "```\n",
+    "Quelle syntaxe devriez-vous utiliser pour accéder au nombre d'habitants à Paris ?\n",
+    "\n",
+    "Quels sont les types des index et des values ?\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.indexes.base.Index'>\n",
+      "<class 'numpy.int64'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "cities =  pd.Series({\n",
+    "    'Bordeaux' : 249712  ,\n",
+    "    'Paris' : 2190327 ,\n",
+    "    'Lille' : 232741\n",
+    "})\n",
+    "\n",
+    "print(type( cities.index) )\n",
+    "\n",
+    "print(type( cities['Paris']) )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercice construire des objets de type Séries\n",
+    "\n",
+    "Créez maintenant un objet de type **Séries** ayant respectivement :\n",
+    "\n",
+    "- Les valeurs:\n",
+    "\n",
+    "```python\n",
+    "range(1, 12, 2)\n",
+    "```\n",
+    "\n",
+    "- Et les index suivants :\n",
+    "\n",
+    "```python\n",
+    "'abcdef'\n",
+    "```\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercice changez les index\n",
+    "\n",
+    "Dans l'objet **Series** suivant :\n",
+    "\n",
+    "```python\n",
+    "cities =  pd.Series({\n",
+    "    'Bordeaux' : 249712,\n",
+    "    'Paris' : 2190327,\n",
+    "    'Lille' : 232741\n",
+    "})\n",
+    "```\n",
+    "\n",
+    "Mettez les codes respectifs des départements à la place des noms des villes dans la **Series** **cities**.\n",
+    "\n",
+    "Bordeaux : 33, Paris : 75, Lille : 59\n",
+    "\n",
+    "Puis sélectionnez uniquement les villes dont la population est supérieure à 2 000 000.\n",
+    "\n",
+    "La population de chaque ville augmente de 10%, appliquez ce changement sur le dataset.\n",
+    "\n",
+    "**Indications :** utilisez la méthode index de l'objet série pour les redéfinir.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "33 : 249712\n",
+      "59 : 232741\n",
+      "75 : 2190327\n",
+      "supérieur à 2 000 000\n",
+      " 75    2190327\n",
+      "dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "cities = {\n",
+    "    'Bordeaux' : 249712  ,\n",
+    "    'Paris' : 2190327 ,\n",
+    "    'Lille' : 232741\n",
+    "}\n",
+    "\n",
+    "cities_s = pd.Series(cities)\n",
+    "\n",
+    "# Bordeaux : 33, Paris : 75, Lille : 59\n",
+    "# Attention à l'ordre des index dans le dictionnaire\n",
+    "departements = [33, 59, 75]\n",
+    "cities_s.index = departements\n",
+    "\n",
+    "\n",
+    "# la méthode items permet d'extraire les clés et les valeurs de la Série\n",
+    "for i, nbHabitant in cities_s.items():\n",
+    "    print(i, ':',  nbHabitant)\n",
+    "    \n",
+    "# Mask pour sélectionner\n",
+    "\n",
+    "print('supérieur à 2 000 000' + \"\\n\", cities_s[ cities_s > 2000000 ])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Remarque sur la création d'une série avec un dictionnaire\n",
+    "\n",
+    "Pandas réogarnise les index par ordre alphabétique:\n",
+    "\n",
+    "```python\n",
+    "A = pd.Series( {'b': 1, 'a' : 9, 'c' : 7, 'f' : 6, 'd' :99, 'e' : 100, 'g' : 77} )\n",
+    "\n",
+    "print(A.index)\n",
+    "# ['a', 'b', 'c', 'd', 'e', 'f', 'g']\n",
+    "\n",
+    "\"\"\"\n",
+    "a      9\n",
+    "b      1\n",
+    "c      7\n",
+    "d     99\n",
+    "e    100\n",
+    "f      6\n",
+    "g     77\n",
+    "\n",
+    "\"\"\"\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Attention cependant à l'ordre dans une liste, celui-ci sera gardé pour la création des index.\n",
+    "\n",
+    "\n",
+    "```python\n",
+    "\n",
+    "A =  pd.Series([1,2,3, 4], index = ['b', 'a', 'c', 'd' ])\n",
+    "\n",
+    "print(A)\n",
+    "\n",
+    "\"\"\"\n",
+    "b    1\n",
+    "a    2\n",
+    "c    3\n",
+    "d    4\n",
+    "\"\"\"\n",
+    "\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "b    1\n",
+      "a    2\n",
+      "c    3\n",
+      "d    4\n",
+      "dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "A =  pd.Series([1,2,3, 4], index = ['b', 'a', 'c', 'd' ])\n",
+    "\n",
+    "print(A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercice Series & index\n",
+    "\n",
+    "Associez les index subjects ci-dessous à l'objet **Series** notes et calculez la moyenne générale de ces notes, donnez églament la médiane.\n",
+    "\n",
+    "```python\n",
+    "notes = pd.Series([13.4, 20, 10, 15, 14, 16])\n",
+    "\n",
+    "subjects = [\n",
+    "'Databases', 'Culture',\n",
+    "'Git', 'Stat desc',\n",
+    "'Stat inf', 'Python'\n",
+    "]\n",
+    "```\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "```python\n",
+    "notes = pd.Series([13.4, 20, 10, 15, 14, 16])\n",
+    "\n",
+    "subjects = [\n",
+    "'Databases', 'Culture',\n",
+    "'Git', 'Stat desc',\n",
+    "'Stat inf', 'Python'\n",
+    "]\n",
+    "\n",
+    "notes.index = subjects\n",
+    "\n",
+    "print(notes)\n",
+    "\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Opération sur les Séries\n",
+    "\n",
+    "On peut utiliser, comme dans Numpy, les opérations arithmétiques classiques sur les Séries. Il faudra cependant faire attention aux index. Les opérations s'alignent sur les index :\n",
+    "\n",
+    "```python\n",
+    "a = pd.Series([1,2,3, 4], ['a', 'b', 'c', 'd' ])\n",
+    "b = pd.Series([10,20,30, 40], ['a', 'b', 'f', 'd' ])\n",
+    "\n",
+    "a + b\n",
+    "\n",
+    "\"\"\"\n",
+    "a    11.0\n",
+    "b    22.0\n",
+    "c     NaN\n",
+    "d    44.0\n",
+    "f     NaN\n",
+    "\n",
+    "\"\"\"\n",
+    "```\n",
+    "\n",
+    "## Re-indexer une Série\n",
+    "\n",
+    "Vous pouvez ré-indexer une série à l'aide de la méthode **reindex**. Si les valeurs de la ré-indexation sont inférieurs ou supérieurs au nombre d'index, Pandas mettra NaN pour toutes correspondances non trouvées :\n",
+    "\n",
+    "```python\n",
+    "a = pd.Series([1,2,3, 4], ['a', 'b', 'c', 'd' ])\n",
+    "print(a)\n",
+    "\"\"\"\n",
+    "a    1\n",
+    "b    2\n",
+    "c    3\n",
+    "d    4\n",
+    "\"\"\"\n",
+    "a = a.reindex(['d', 'b', 'a', 'c', 'f'])\n",
+    "\n",
+    "# reindexé\n",
+    "\"\"\"\n",
+    "d    4.0\n",
+    "b    2.0\n",
+    "a    1.0\n",
+    "c    3.0\n",
+    "f    NaN\n",
+    "\"\"\"\n",
+    "```\n",
+    "\n",
+    "Si les index sont moins nombreux alors des valeurs seront supprimées.\n",
+    "\n",
+    "```python\n",
+    "a = a.reindex(['d', 'b'])\n",
+    "\"\"\"\n",
+    "d    4\n",
+    "b    2\n",
+    "\"\"\"\n",
+    "```\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.5.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

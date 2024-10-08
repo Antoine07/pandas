@@ -1,0 +1,105 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Méthode d'agrégation introduction\n",
+    "\n",
+    "## Exercice méthode groupby\n",
+    "\n",
+    "Soient les deux séries suivantes **fruits** et **weights**, calculez la moyenne des poids de chaques fruits. Utilisez la méthode **groupby**, elle permet de regrouper (agréger) des valeurs. Cette méthode ignorera les valeurs manquantes.\n",
+    "\n",
+    "Retournez tous les poids du fruit \"banana\". Donnez également le nombre de bananes.\n",
+    "\n",
+    "Quelle est le fruit qui a la somme de ses poids la plus élevée ?\n",
+    "\n",
+    "Ordonnez par somme des poids les fruits.\n",
+    "\n",
+    "```python\n",
+    "fruits = np.random.choice(['banana', 'apple', 'raspberry'], 15)\n",
+    "# Respectivement chaque poids correspond à chaque fruit\n",
+    "# linspace retourne un intervalle de valeurs entre 1 et 2\n",
+    "weights = np.linspace(1.0, 2.0, 15)\n",
+    "```\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Méthode d'agrégation introduction\n",
+    "\n",
+    "## Exercice méthode groupby\n",
+    "\n",
+    "Soient les deux séries suivantes **fruits** et **weights**, calculez la moyenne des poids de chaques fruits. Utilisez la méthode **groupby**, elle permet de regrouper (agréger) des valeurs. Cette méthode ignorera les valeurs manquantes.\n",
+    "\n",
+    "Retournez tous les poids du fruit \"banana\". Donnez également le nombre de bananes.\n",
+    "\n",
+    "Quelle est le fruit qui a la somme de ses poids la plus élevée ?\n",
+    "\n",
+    "Ordonnez par somme des poids les fruits.\n",
+    "\n",
+    "```python\n",
+    "fruits = np.random.choice(['banana', 'apple', 'raspberry'], 15)\n",
+    "# Respectivement chaque poids correspond à chaque fruit\n",
+    "# linspace retourne un intervalle de valeurs entre 1 et 2\n",
+    "weights = np.linspace(1.0, 2.0, 15)\n",
+    "```\n",
+    "## Exercice ville et notes\n",
+    "\n",
+    "On a récolté 100 notes d'internautes qu'ils ont attribué à trois villes différentes : Bordeaux, Lille et Paris. Ces valeurs sont données dans les deux tableau Numpy suivants :\n",
+    "\n",
+    "```python\n",
+    "cities = np.random.choice(['Bordeaux', 'Lille', 'Paris'], 100)\n",
+    "notes = np.random.randint(0, 100, 100)\n",
+    "```\n",
+    "\n",
+    "1. Créez les deux Séries cities_s et notes_s à partir de ces informations.\n",
+    "\n",
+    "2. Donnez la moyenne de chaque ville.\n",
+    "\n",
+    "3. Quelle ville a eu la meilleur note des internautes ?\n",
+    "\n",
+    "4. Y a t il une ville qui a eu plus de notes qu'une autre ?\n",
+    "\n",
+    "La question suivante est un peu avancée, faites là si vous avez le temps et la motivation.\n",
+    "\n",
+    "5. On définit maintenant des coefficients pour chacune des notes. Calculez la moyenne des notes par ville en  considérant ces coefficients.\n",
+    "\n",
+    "```python\n",
+    "coeff = np.random.randint(1, 5, 100)\n",
+    "```\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.5.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

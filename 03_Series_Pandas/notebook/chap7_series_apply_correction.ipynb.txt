@@ -1,0 +1,97 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Méthode apply\n",
+    "\n",
+    "## Exercice apply\n",
+    "\n",
+    "La méthode apply sur une série Pandas permet d'appliquer une fonction ou une lambda afin d'effectuer un calcul sur ses éléments.\n",
+    "\n",
+    "1. En utilisant une fonction lambda, mettez les premières lettres en majuscules de chaques prénoms ci-dessous :\n",
+    "\n",
+    "2. Trouvez la personne qui a la plus longue longueur de chaîne de caractères.\n",
+    "\n",
+    "```python\n",
+    "\n",
+    "firstName = pd.Series([\n",
+    "    'adaline Reichel',\n",
+    "    'dr. Santa Prosacco DVM',\n",
+    "    'noemy Vandervort V',\n",
+    "    'lexi O Conner',\n",
+    "    'gracie Weber',\n",
+    "    'roscoe Johns',\n",
+    "    'emmett Lebsack',\n",
+    "    'keegan Thiel',\n",
+    "    'wellington Koelpin II',\n",
+    "    'ms. Karley Kiehn V',\n",
+    "])\n",
+    "\n",
+    "```\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Correction\n",
+    "\n",
+    "```python\n",
+    "\n",
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "firstName = pd.Series([\n",
+    "    'adaline Reichel',\n",
+    "    'dr. Santa Prosacco DVM',\n",
+    "    'noemy Vandervort V',\n",
+    "    'lexi O Conner',\n",
+    "    'gracie Weber',\n",
+    "    'roscoe Johns',\n",
+    "    'emmett Lebsack',\n",
+    "    'keegan Thiel',\n",
+    "    'wellington Koelpin II',\n",
+    "    'ms. Karley Kiehn V',\n",
+    "])\n",
+    "\n",
+    "\n",
+    "# 1. Première lettre en majuscule\n",
+    "print( firstName.apply( lambda x : x[0].upper() + x[1:]) )\n",
+    "\n",
+    "# 2.Trouvez la personne qui a la plus longue longueur de chaîne de caractères.\n",
+    "\n",
+    "f = firstName.apply( lambda x : len(x) )\n",
+    "\n",
+    "# On applique le mask pour trouver la personne ayant la longueur de chaîne la plus longue\n",
+    "print( firstName[ f == f.max() ] )\n",
+    "\n",
+    "```"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.5.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
