@@ -5,7 +5,7 @@ january = np.array([-2,  5, -5,  6, -2,  0,  6,  2,  8,  0,  6, -1,  3,  3,  7, 
 
 
 
-# Affiche toute les température positive et que l'on en fasse la somme
+# Affichez toute les températures positives et faites la somme de ces températures
 
 # Comparaison est-ce qu'il y a plus de température positive que négative
 
